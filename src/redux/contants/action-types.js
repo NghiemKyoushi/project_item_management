@@ -1,0 +1,11 @@
+export const ActionTypes = {
+    LOGIN: "LOGIN",
+    REGISTER: "REGISTER",
+    LOGOUT: "LOGOUT",
+    GETALLITEM: "GETALLITEM",
+    ADDITEM: "ADDITEM",
+    EDITITEM: "EDITITEM",
+    REMOVEITEM:"REMOVEITEM",
+    GETHOME : "GETHOME",
+}
+

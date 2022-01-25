@@ -1,38 +1,172 @@
-.App {
-  text-align: center;
+
+.inputSearch {
+  border-radius: 40px;
+  height: 40px;
+  width: 642px;
+  margin-top: 4px;
+  margin-left: 30px;
+  border:solid 1px #ccc;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+input[type="text"]::placeholder {
+  padding-left: 20px;
+}
+input:focus{
+  padding-left: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.makeStyles-root-1{
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+.labelSize{
+  font-size: 13px;
+}
+
+.usage{
+  border: 2px solid rgb(173, 165, 165);
+  width: 60px;
+  height: 20px;
+  padding-top: 2px;
+  border-radius: 20px;
+  margin-top: 1px;
+}
+.title{
+  height: 30px;
+}
+.formSignUp{
+  max-width: 100%; 
+   max-height: 725px;
+  background: #1fc3ff ;
+  /* margin-top: -20px; */
+  z-index: 1;
+}
+.imgContainer{
+    /* height: 100vh; */
+}
+
+.imgHouse{
+  width:90%;
+
+}
+.welcome{
+  color: #1fc3ff;
+  text-align: center;
+  letter-spacing: 5px;
+  font-size: 40px;
+  font-weight: bold;
+}
+.product{
+  color: #ef6920;
+  text-align: center;
+  margin-top: -20px;
+}
+.underline{
+    width: 18%;
+    text-align: center;
+    background: #5c91d9;
+    height: 4px;
+    border-radius: 50px;
+}
+.signUp{
+    color: white;
+    font-size: 70px;
+    font-weight: bold;
+    padding-top: 26px;
+    padding-left: 135px;
+    letter-spacing: 5px;
+    margin-bottom: -67px;
+}
+.here{
+  color: white;
+  padding-left: 201px;
+  letter-spacing: 5px;
+  margin-top: -5px;
+  font-size: 70px;
+  font-weight: bold;
+  margin-left: 125px;
+}
+.imgCat{
+  margin-top: -105px;
+  margin-left: 463px;
+}
+.inputRounded .MuiOutlinedInput-root{
+  border-radius: 50px;
+  background-color: white;
+  width: 450px;
+}
+.formSignUp1{
+  margin-left: 130px;
+  margin-top: -40px;
+}
+
+.normal{
+  width: 70px;
+  height: 7px;
+  background-color: white;
+  border-radius: 30px;
+  margin-left: 3px;
+}
+.weak{
+  width: 70px;
+  height: 7px;
+  background-color: rgb(233, 173, 61);
+  border-radius: 30px;
+  margin-left: 3px;
+}
+.medium{
+  width: 70px;
+  height: 7px;
+  background-color: rgb(62, 150, 12);
+  border-radius: 30px;
+  margin-left: 3px;
+}
+.strong{
+  width: 70px;
+  height: 7px;
+  background-color: rgb(104, 245, 23);
+  border-radius: 30px;
+  margin-left: 3px;
+}
+.checkpass{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.container{
+  margin-right: 175px;
+  display: flex;
+  justify-content: space-between;
+  white-space: 5px;
+  flex-wrap: wrap;
+  margin-top: 25px;
+}
+.standard_Password{
+  letter-spacing: 3px;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.containButton{
+  margin-left: 22px;
+  margin-top: 5px;
+}
+.space{
+  height: 57px;
+}
+.space2{
+  height: 182px;
+
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.buttonOnNav{
+  margin-left: 275px;
+}
+
+.Reply{
+  margin-left: 20px;
+  width: 60%;
+}
+.cardReply{
+  margin-left: 80px;
 }
