@@ -18,6 +18,7 @@ export const logout = (user) => {
         payload: user
     }
 }
+
 // get item____________________________________________________________________ 
 export const getAllItem = (item) => {
     return {
@@ -45,3 +46,17 @@ export const deleteItem  = (item) => {
         payload: item
     }
 }
+
+export const getAllUser = (users) => {
+    return {
+        type: ActionTypes.GETALLUSER,
+        payload:users
+    }
+}
+export const getItemExpired = (items) => {
+    return {
+        type: ActionTypes.GETITEMEXPIREDDATE,
+        payload:items
+    }
+}
+

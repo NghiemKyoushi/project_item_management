@@ -1,10 +1,12 @@
 import {combineReducers} from 'redux';
-import { itemReducers, reducers } from './reducers';
+import { itemReducers, reducers, homeReducer, itemExpireReducer } from './reducers';
 
 
 const reducers1 = combineReducers({
     users: reducers,
-    item: itemReducers
+    item: itemReducers,
+    home: homeReducer,
+    itemExpired: itemExpireReducer
 })
 
 export default reducers1;

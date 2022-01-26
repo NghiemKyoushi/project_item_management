@@ -1,12 +1,12 @@
 import { ActionTypes } from "../contants/action-types"
-import { login, getAllItem, logout, addItem, deleteItem } from "../actions/userActions";
+import { login, getAllItem, logout, getItemExpired, getAllUser, addItem, deleteItem } from "../actions/userActions";
 import jwtDecode from "jwt-decode";
 import axios from "axios";
 import storage from 'redux-persist/lib/storage';
 
 const initialState = {
   user: {
-    isLogin: false, 
+    isLogin: false,
     userId: "",
     username: "",
   }
@@ -22,27 +22,26 @@ export const reducers = (state = initialState, { type, payload }) => {
           username: payload.username
         }
       }
-     case ActionTypes.LOGOUT:
-       return {
-         user: {
+    case ActionTypes.LOGOUT:
+      return {
+        user: {
           isLogin: payload.isLogin,
           userId: payload.userID,
-          username: payload.username 
-         }
-       }
+          username: payload.username
+        }
+      }
     default:
       return state
   }
 }
 
-const currentState ={
+const currentState = {
   item: [],
-  home: []
 }
 export const itemReducers = (state = currentState, { type, payload }) => {
   switch (type) {
     case ActionTypes.GETALLITEM:
-      return{
+      return {
         ...state.item,
         item: payload
       }
@@ -52,7 +51,7 @@ export const itemReducers = (state = currentState, { type, payload }) => {
         item: payload
       }
     case ActionTypes.EDITITEM:
-      return{
+      return {
         ...state.item,
         item: payload
       }
@@ -65,7 +64,55 @@ export const itemReducers = (state = currentState, { type, payload }) => {
       return state
   }
 }
+const stateHome = {
+  home: [],
 
+}
+export const homeReducer = (state = stateHome, { type, payload }) => {
+  switch (type) {
+    case ActionTypes.GETALLUSER:
+      return {
+        ...state.home,
+        home: payload
+      }
+    default:
+      return state
+  }
+}
+const stateExpired = {
+  itemExpired: []
+}
+export const itemExpireReducer = (state = stateExpired, { type, payload }) => {
+  switch (type) {
+    case ActionTypes.GETITEMEXPIREDDATE:
+      return {
+        ...state.itemExpired,
+        itemExpired: payload
+      }
+    default:
+      return state
+  }
+}
+
+export const getItemExpired1 = (uid) => async dispatch => {
+  const body = {
+    userID: uid
+  };
+  const result = await axios.post("http://localhost:3030/item/getItemExpired", body);
+  const data = result.data.message;
+  const formatDate = data.map((item) => {
+    var startTime = new Date(item.expired_date);
+    // console.log(startTime.toISOString().substring(0, 10));
+    item.expired_date = startTime.toISOString().substring(0, 10);
+    return item;
+  });
+  dispatch(getItemExpired(formatDate));
+}
+export const getUser = (uid) => async dispatch => {
+  console.log("home", uid)
+  const result = await axios.get(`http://localhost:3030/users/getAllUser/${uid}`);
+  dispatch(getAllUser(result.data.user));
+}
 
 
 export const addItem1 = (info) => async dispatch => {
@@ -92,7 +139,7 @@ export const addItem1 = (info) => async dispatch => {
   }
   // setFile("");
 }
-export const deleteItem1 = (body)=> async dispatch => {
+export const deleteItem1 = (body) => async dispatch => {
   console.log("delete", body)
   const delete_Item = await axios.post(
     "http://localhost:3030/item/deleteItem",

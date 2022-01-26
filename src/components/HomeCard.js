@@ -5,8 +5,11 @@ import ImageListItemBar from "@mui/material/ImageListItemBar";
 import DialogItem from "./DialogItem";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
-export default function ItemCard({ homeData }) {
+import { useDispatch, useSelector } from 'react-redux';
+
+export default function ItemCard() {
   const [open, setOpen] = useState(false);
+  const home = useSelector((state)=>{return state.home})
 
   return (
     <ImageList
@@ -20,7 +23,7 @@ export default function ItemCard({ homeData }) {
         paddingRight: 3,
       }}
     >
-      {homeData.map((user, index) => (
+      {home.home.map((user, index) => (
         <ImageListItem
           sx={{
             boxShadow: "-0.2px 0px 3px 1px #ced4de",

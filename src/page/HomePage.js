@@ -23,7 +23,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { Button } from "@mui/material";
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllItem1, logout1 } from "../redux/reducers/reducers"
+import { getAllItem1, logout1, getUser,getItemExpired1 } from "../redux/reducers/reducers"
 
 
 const drawerWidth = 200;
@@ -97,8 +97,8 @@ export default function HomePage(props) {
     const user = useSelector((state) => { return state.users });
     const item = useSelector((state) => { return state.item });
 
-    console.log("uhuhu",user.user)
-    console.log("item",item)
+    console.log("uhuhu", user.user)
+    console.log("item", item)
 
 
     const dispatch = useDispatch();
@@ -107,6 +107,9 @@ export default function HomePage(props) {
         if (user.user.isLogin) {
             console.log("vaoooo")
             getAllItem1(user.user.userId)(dispatch);
+            getUser(user.user.userId)(dispatch);
+            getItemExpired1(user.user.userId)(dispatch);
+
         }
     }, [user]);
 
@@ -137,6 +140,7 @@ export default function HomePage(props) {
                     display="flex"
                 >
                     <Toolbar>
+                        <Link to="/" style={{ textDecoration: "none" }}>
                         <Typography
                             variant="h5"
                             noWrap
@@ -145,6 +149,8 @@ export default function HomePage(props) {
                         >
                             Welcome to my home
                         </Typography>
+                        </Link>
+                        
                         <div>
                             <input
                                 onKeyDown={_handleKeyDown}
@@ -172,10 +178,10 @@ export default function HomePage(props) {
                                     src={Avatar_img}
                                     imgProps={{ height: 10, width: 10 }}
                                 />
-                                <p style={{ marginTop: 8 }}></p>
+                                <p style={{ marginTop: 8 }}>{user.user.username}</p>
                                 <IconButton
                                     sx={{ color: "#1fc3ff", marginLeft: 2 }}
-                                  onClick={logOut}
+                                    onClick={logOut}
                                 >
                                     <LogoutIcon />
                                 </IconButton>
@@ -231,7 +237,7 @@ export default function HomePage(props) {
                 >
                     <DrawerHeader>
                         <IconButton
-                            //   onClick={props.leaveHome}
+                            onClick={props.leaveHome}
                             size="large"
                             color="inherit"
                             aria-label="open drawer"
@@ -241,8 +247,8 @@ export default function HomePage(props) {
                     </DrawerHeader>
                     <List>
                         <ListItem button>
-                            {/* onClick={props.clickHome} */}
-                            <ListItemIcon key={1} >
+                            <ListItemIcon key={1} onClick={props.clickHome}
+                            >
                                 <img src={Home} alt="new" height="30px" width="30px" />
                             </ListItemIcon>
                         </ListItem>
